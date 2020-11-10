@@ -1,0 +1,24 @@
+{
+  "name": "passwords-over-9000",
+  "version": "1.0.0",
+  "description": "Password Manager based on Node.js",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/domko95/passwords-over-9000.git"
+  },
+  "author": "Dominique Kolbe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/domko95/passwords-over-9000/issues"
+  },
+  "homepage": "https://github.com/domko95/passwords-over-9000#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}
