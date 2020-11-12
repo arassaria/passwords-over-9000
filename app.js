@@ -1,4 +1,3 @@
-const inquirer = require("inquirer");
 const {
   askForMasterPassword,
   chooseMode,
@@ -8,6 +7,17 @@ const {
 } = require("./lib/questions");
 const { isMasterPasswordCorrect } = require("./lib/validation");
 const { getPassword, setPassword } = require("./lib/password");
+
+// function testDb() {
+//   MongoClient.connect(url, function (err, client) {
+//     assert.equal(null, err);
+//     const db = client.db("test");
+//     db.collection("inventory").deleteMany({
+//       qty: 100,
+//     });
+//     client.close();
+//   });
+// }
 
 async function run() {
   let exit = 0;

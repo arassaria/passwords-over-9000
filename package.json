@@ -19,6 +19,7 @@
   "homepage": "https://github.com/domko95/passwords-over-9000#readme",
   "devDependencies": {},
   "dependencies": {
-    "inquirer": "^7.3.3"
+    "inquirer": "^7.3.3",
+    "mongodb": "^3.6.3"
   }
 }
