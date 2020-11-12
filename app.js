@@ -17,7 +17,7 @@ const {
 async function run() {
   let exit = 0;
   const masterPassword = await askForMasterPassword();
-  if (!isMasterPasswordCorrect(masterPassword)) {
+  if (!(await isMasterPasswordCorrect(masterPassword))) {
     console.error(`Go away, you filthy Hacker!`);
     return;
   }
@@ -37,15 +37,8 @@ async function run() {
       await setPassword(passwordName, newPasswordValue);
     } else {
       const passwordName = await getPasswordName(passwordSafeKeys);
-
       const password = await getPassword(passwordName);
-      if (password) {
-        console.log(`${passwordName}: ${password}`);
-      } else {
-        console.log(
-          "Very smart, Hacker. Asking for a password that does not exist."
-        );
-      }
+      console.log(`${passwordName}: ${password}`);
     }
     const more = await doMore();
     if (!more.includes("Yes")) {

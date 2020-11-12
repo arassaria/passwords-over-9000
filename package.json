@@ -19,6 +19,7 @@
   "homepage": "https://github.com/domko95/passwords-over-9000#readme",
   "devDependencies": {},
   "dependencies": {
+    "crypto-js": "^4.0.0",
     "inquirer": "^7.3.3"
   }
 }
