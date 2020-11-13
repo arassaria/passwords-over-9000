@@ -4,17 +4,19 @@ const {
   getPasswordName,
   getNewPasswordValue,
   doMore,
-  setNewPasswordName,
   setNewUserdata,
 } = require("./lib/questions");
 const { isMasterPasswordCorrect } = require("./lib/validation");
 const {
   getPassword,
-  setPassword,
   readPasswordSafe,
+  updateUserdata,
+  deleteData,
+  updatePassword,
 } = require("./lib/password");
 const { connectToDb, closeDbConnection } = require("./lib/database");
 const dotenv = require("dotenv");
+const { enterNewPassword } = require("./components/enterNewPassword");
 
 dotenv.config();
 
@@ -34,19 +36,22 @@ async function run() {
   }
   console.log(`Fuck, how did you get the super secret master password?`);
   while (exit === 0) {
-    const passwordSafe = await readPasswordSafe();
-    const passwordSafeKeys = Object.keys(passwordSafe);
+    const passwordSafeKeys = await readPasswordSafe();
     const mode = await chooseMode();
     console.log(mode);
     if (mode.includes("Enter a new password")) {
-      const passwordName = await setNewPasswordName();
-      const newUserdata = await setNewUserdata();
-      const newPasswordValue = await getNewPasswordValue();
-      await setPassword(passwordName, newUserdata, newPasswordValue);
+      await enterNewPassword(passwordSafeKeys);
     } else if (mode.includes("Edit a password")) {
       const passwordName = await getPasswordName(passwordSafeKeys);
       const newPasswordValue = await getNewPasswordValue();
-      await setPassword(passwordName, newPasswordValue);
+      await updatePassword(passwordName, newPasswordValue);
+    } else if (mode.includes("Edit userdata")) {
+      const passwordName = await getPasswordName(passwordSafeKeys);
+      const newUserdata = await setNewUserdata();
+      await updateUserdata(passwordName, newUserdata);
+    } else if (mode.includes("Delete a password")) {
+      const passwordName = await getPasswordName(passwordSafeKeys);
+      await deleteData(passwordName);
     } else {
       const passwordName = await getPasswordName(passwordSafeKeys);
       const password = await getPassword(passwordName);
