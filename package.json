@@ -20,6 +20,8 @@
   "devDependencies": {},
   "dependencies": {
     "crypto-js": "^4.0.0",
-    "inquirer": "^7.3.3"
+    "dotenv": "^8.2.0",
+    "inquirer": "^7.3.3",
+    "mongodb": "^3.6.3"
   }
 }
