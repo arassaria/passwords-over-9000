@@ -53,8 +53,8 @@ async function run() {
       const passwordName = await getPasswordName(passwordSafeKeys);
       const password = await getPassword(passwordName);
       console.log(`${passwordName}`);
-      console.log(`userdata: ${password[1]}`);
-      console.log(`password: ${password[0]}`);
+      console.log(`userdata: ${password[0]}`);
+      console.log(`password: ${password[1]}`);
     }
     const more = await doMore();
     if (!more.includes("Yes")) {
