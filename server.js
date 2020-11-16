@@ -21,10 +21,13 @@ app.post("/api/passwords", (req, res) => {
 });
 
 app.patch("/api/passwords/:name", (req, res) => {
-  const { name, value } = req.body;
+  const { name } = req.params;
+  const { value } = req.body;
   updatePassword(name, value);
   res.send("Updated data in database.");
 });
+
+app.delete("");
 
 async function run() {
   console.log("Connecting to Database...");
