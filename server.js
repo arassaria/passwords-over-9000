@@ -1,4 +1,3 @@
-const bodyParser = require("body-parser");
 const express = require("express");
 const { connectToDb } = require("./lib/database");
 const {
@@ -12,12 +11,17 @@ const app = express();
 const port = 3000;
 require("dotenv").config();
 
-app.use(bodyParser.json({ extended: true }));
+app.use(express.json());
 
 app.get("/api/passwords/:name", async (req, res) => {
   const { name } = req.params;
-  const passwordValue = await getPassword(name);
-  res.send(passwordValue);
+  try {
+    const passwordValue = await getPassword(name);
+    res.send(passwordValue);
+  } catch (error) {
+    console.error(error);
+    res.status(404).send("404. Password not found.");
+  }
 });
 
 app.get("/api/passwords", async (req, res) => {
@@ -27,8 +31,15 @@ app.get("/api/passwords", async (req, res) => {
 
 app.post("/api/passwords", async (req, res) => {
   const { name, userdata, value } = req.body;
-  await setPassword(name, userdata, value);
-  res.send("New Input posted into database.");
+  try {
+    await setPassword(name, userdata, value);
+    res.send("New Input posted into database.");
+  } catch (e) {
+    console.error(e);
+    res
+      .status(500)
+      .send("An unexpected error occured. Please try again later.");
+  }
 });
 
 app.patch("/api/passwords/:name", async (req, res) => {
