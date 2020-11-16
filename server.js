@@ -1,7 +1,12 @@
 const bodyParser = require("body-parser");
 const express = require("express");
 const { connectToDb } = require("./lib/database");
-const { getPassword, setPassword, updatePassword } = require("./lib/password");
+const {
+  getPassword,
+  setPassword,
+  updatePassword,
+  deleteData,
+} = require("./lib/password");
 const app = express();
 const port = 3000;
 require("dotenv").config();
@@ -14,20 +19,24 @@ app.get("/api/passwords/:name", async (req, res) => {
   res.send(passwordValue);
 });
 
-app.post("/api/passwords", (req, res) => {
+app.post("/api/passwords", async (req, res) => {
   const { name, userdata, value } = req.body;
-  setPassword(name, userdata, value);
+  await setPassword(name, userdata, value);
   res.send("New Input posted into database.");
 });
 
-app.patch("/api/passwords/:name", (req, res) => {
+app.patch("/api/passwords/:name", async (req, res) => {
   const { name } = req.params;
   const { value } = req.body;
-  updatePassword(name, value);
+  await updatePassword(name, value);
   res.send("Updated data in database.");
 });
 
-app.delete("");
+app.delete("/api/passwords/:name", async (req, res) => {
+  const { name } = req.params;
+  await deleteData(name);
+  res.send("Data deleted from database");
+});
 
 async function run() {
   console.log("Connecting to Database...");
