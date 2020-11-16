@@ -1,10 +1,12 @@
-const { response } = require("express");
+const bodyParser = require("body-parser");
 const express = require("express");
 const { connectToDb } = require("./lib/database");
-const { getPassword } = require("./lib/password");
+const { getPassword, setPassword, updatePassword } = require("./lib/password");
 const app = express();
 const port = 3000;
 require("dotenv").config();
+
+app.use(bodyParser.json({ extended: true }));
 
 app.get("/api/passwords/:name", async (req, res) => {
   const { name } = req.params;
@@ -13,7 +15,15 @@ app.get("/api/passwords/:name", async (req, res) => {
 });
 
 app.post("/api/passwords", (req, res) => {
-  res.send("Under Construction");
+  const { name, userdata, value } = req.body;
+  setPassword(name, userdata, value);
+  res.send("New Input posted into database.");
+});
+
+app.patch("/api/passwords/:name", (req, res) => {
+  const { name, value } = req.body;
+  updatePassword(name, value);
+  res.send("Updated data in database.");
 });
 
 async function run() {
