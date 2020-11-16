@@ -22,10 +22,7 @@ dotenv.config();
 
 async function run() {
   console.log("Connecting to Database...");
-  await connectToDb(
-    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.jbf9x.mongodb.net/passwords-over-9000?retryWrites=true&w=majority`,
-    "passwords-over-9000"
-  );
+  await connectToDb(process.env.DB_URI, process.env.DB_NAME);
   console.log("Connected to Database.");
   let exit = 0;
   const masterPassword = await askForMasterPassword();
