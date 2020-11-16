@@ -17,16 +17,27 @@ app.get("/api/passwords/:name", async (req, res) => {
   const { name } = req.params;
   try {
     const passwordValue = await getPassword(name);
+    if (!passwordValue) {
+      res.status(404).send("404. Password not found.");
+      return;
+    }
     res.send(passwordValue);
   } catch (error) {
     console.error(error);
-    res.status(404).send("404. Password not found.");
+    res.status(500).send("Could not find the password.");
   }
 });
 
 app.get("/api/passwords", async (req, res) => {
-  const passwords = await getPasswordNames();
-  res.send(passwords);
+  try {
+    const passwords = await getPasswordNames();
+    res.send(passwords);
+  } catch (e) {
+    console.error(error);
+    res
+      .status(500)
+      .send("An unexpected error occured. Please try again later.");
+  }
 });
 
 app.post("/api/passwords", async (req, res) => {
@@ -45,14 +56,28 @@ app.post("/api/passwords", async (req, res) => {
 app.patch("/api/passwords/:name", async (req, res) => {
   const { name } = req.params;
   const { value } = req.body;
-  await updatePassword(name, value);
-  res.send("Updated data in database.");
+  try {
+    await updatePassword(name, value);
+    res.send("Updated data in database.");
+  } catch (e) {
+    console.error(e);
+    res
+      .status(500)
+      .send("An unexpected error occured. Please try again later.");
+  }
 });
 
 app.delete("/api/passwords/:name", async (req, res) => {
   const { name } = req.params;
-  await deleteData(name);
-  res.send("Data deleted from database");
+  try {
+    await deleteData(name);
+    res.send("Data deleted from database");
+  } catch (e) {
+    console.error(e);
+    res
+      .status(500)
+      .send("An unexpected error occured. Please try again later.");
+  }
 });
 
 async function run() {
