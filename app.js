@@ -9,7 +9,7 @@ const {
 const { isMasterPasswordCorrect } = require("./lib/validation");
 const {
   getPassword,
-  readPasswordSafe,
+  getPasswordNames,
   updateUserdata,
   deleteData,
   updatePassword,
@@ -33,7 +33,7 @@ async function run() {
   }
   console.log(`Fuck, how did you get the super secret master password?`);
   while (exit === 0) {
-    const passwordSafeKeys = await readPasswordSafe();
+    const passwordSafeKeys = await getPasswordNames();
     const mode = await chooseMode();
     console.log(mode);
     if (mode.includes("Enter a new password")) {

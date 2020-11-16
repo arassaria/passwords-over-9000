@@ -6,6 +6,7 @@ const {
   setPassword,
   updatePassword,
   deleteData,
+  getPasswordNames,
 } = require("./lib/password");
 const app = express();
 const port = 3000;
@@ -17,6 +18,11 @@ app.get("/api/passwords/:name", async (req, res) => {
   const { name } = req.params;
   const passwordValue = await getPassword(name);
   res.send(passwordValue);
+});
+
+app.get("/api/passwords", async (req, res) => {
+  const passwords = await getPasswordNames();
+  res.send(passwords);
 });
 
 app.post("/api/passwords", async (req, res) => {
