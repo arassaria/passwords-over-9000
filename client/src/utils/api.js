@@ -15,3 +15,21 @@ export async function deletePassword(name) {
     method: "DELETE",
   });
 }
+
+export async function createNewPassword(
+  passwordName,
+  newUserdata,
+  newPasswordValue
+) {
+  await fetch(`http://localhost:3001/api/passwords`, {
+    method: "POST",
+    body: JSON.stringify({
+      name: passwordName,
+      userdata: newUserdata,
+      value: newPasswordValue,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}

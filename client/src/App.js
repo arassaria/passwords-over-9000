@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getPasswordNames } from "./utils/api";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Password from "./components/Password";
+import Form from "./components/Form";
 
 function App() {
   const [passwordNames, setPasswordNames] = useState([""]);
@@ -11,11 +12,15 @@ function App() {
     }
     fetchData();
   }, []);
+
   return (
     <Router>
       <div>
         <h1>Passwords Over 9000</h1>
         <Switch>
+          <Route path="/password">
+            <Form />
+          </Route>
           <Route path="/:name">
             <Password />
             <Link to="/">Home</Link>
@@ -30,6 +35,7 @@ function App() {
                   </li>
                 ))}
             </ul>
+            <Link to="/password">New Password</Link>
           </Route>
         </Switch>
       </div>
