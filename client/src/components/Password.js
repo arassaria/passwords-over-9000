@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getPassword } from "../utils/api";
+import { useHistory, useParams } from "react-router-dom";
+import { deletePassword, getPassword } from "../utils/api";
 
 export default function Password() {
-  //   let match = useParams();
+  const history = useHistory();
   const { name } = useParams();
   const [password, setPassword] = useState([]);
   useEffect(() => {
@@ -12,6 +12,11 @@ export default function Password() {
     }
     fetchData(name);
   }, [name]);
+
+  async function handleClick(name) {
+    await deletePassword(name);
+    history.push("/");
+  }
   return (
     <div>
       {password.length !== 0 ? (
@@ -19,6 +24,7 @@ export default function Password() {
       ) : (
         <p>404 Password not Found</p>
       )}
+      <button onClick={() => handleClick(name)}>DELETE!</button>
     </div>
   );
 }

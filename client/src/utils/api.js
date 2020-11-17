@@ -9,3 +9,9 @@ export async function getPassword(name) {
   const password = await result.json();
   return password;
 }
+
+export async function deletePassword(name) {
+  await fetch(`http://localhost:3001/api/passwords/${name}`, {
+    method: "DELETE",
+  });
+}

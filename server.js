@@ -11,10 +11,8 @@ const app = express();
 const port = 3001;
 require("dotenv").config();
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  next();
-});
+const cors = require("cors");
+app.use(cors());
 
 app.use(express.json());
 
