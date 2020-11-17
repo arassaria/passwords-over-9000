@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { getPasswordNames } from "./utils/api";
 
 function App() {
+  const [passwordNames, setPasswordNames] = useState([""]);
+  useEffect(() => {
+    async function fetchData() {
+      setPasswordNames(await getPasswordNames());
+    }
+    fetchData();
+  }, []);
+  console.log(passwordNames);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Passwords Over 9000</h1>
+      <h3>Your Passwords</h3>
+      <ul>
+        {passwordNames &&
+          passwordNames.map((passwordName) => <li>{passwordName}</li>)}
+      </ul>
     </div>
   );
 }
