@@ -8,8 +8,13 @@ const {
   getPasswordNames,
 } = require("./lib/password");
 const app = express();
-const port = 3000;
+const port = 3001;
 require("dotenv").config();
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  next();
+});
 
 app.use(express.json());
 
