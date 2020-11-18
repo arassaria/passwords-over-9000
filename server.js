@@ -8,7 +8,7 @@ const {
   getPasswordNames,
 } = require("./lib/password");
 const app = express();
-const port = 3000;
+const port = 3001;
 require("dotenv").config();
 
 app.use(express.json());
