@@ -19,11 +19,11 @@ function App() {
       <div>
         <h1>Passwords Over 9000</h1>
         <Switch>
-          <Route path="/password">
-            <Form />
-          </Route>
           <Route path="/edit">
             <Edit />
+          </Route>
+          <Route path="/password">
+            <Form />
           </Route>
           <Route path="/:name">
             <Password />

@@ -20,9 +20,9 @@ export default function Form() {
     setPasswordValue(e.target.value);
   }
 
-  async function handleSubmit(passwordName, userdata, passwordValue, e) {
+  function handleSubmit(passwordName, userdata, passwordValue, e) {
     e.preventDefault();
-    await createNewPassword(passwordName, userdata, passwordValue);
+    createNewPassword(passwordName, userdata, passwordValue);
     history.push("/");
   }
 
