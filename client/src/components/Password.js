@@ -1,6 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { deletePassword, getPassword } from "../utils/api";
+import styled from "styled-components/macro";
+
+const Wrapper = styled.div`
+  text-align: center;
+  margin: 2rem;
+`;
+
+const WrapperObject = styled.div`
+  background: yellow;
+  border: 1px solid black;
+  margin: 1rem auto;
+  width: 40%;
+  padding: 0.5rem 0;
+  box-shadow: 5px 5px 5px green;
+`;
+
+const Button = styled.button`
+  display: block;
+  border: 1px solid black;
+  background: grey;
+  color: black;
+  padding: 5px 20px;
+  box-shadow: 5px 5px 5px black;
+  width: 20%;
+  margin: 1rem auto;
+`;
+
+const DangerButton = styled(Button)`
+  background: red;
+`;
 
 export default function Password() {
   const history = useHistory();
@@ -28,30 +58,24 @@ export default function Password() {
   return (
     <div>
       <h3>Password {name}</h3>
-      {password.length !== 0 ? (
-        <div>
-          <p>
-            <span>PasswordName: </span>
-            <span>{name}</span>
-          </p>
-          <p>
-            <span>Userdata: </span>
-            <span>{password[0]}</span>
-          </p>
-          <p>
-            <span>Password: </span>
-            <span>{password[1]}</span>
-          </p>
-          <button
-            onClick={() => handleEditClick(name, password[0], password[1])}
-          >
-            EDIT
-          </button>
-          <button onClick={() => handleClick(name)}>DELETE!</button>
-        </div>
-      ) : (
-        <p>404 Password not Found</p>
-      )}
+      <Wrapper>
+        <WrapperObject>
+          <span>PasswordName: </span>
+          <span>{name}</span>
+        </WrapperObject>
+        <WrapperObject>
+          <span>Userdata: </span>
+          <span>{password[0]}</span>
+        </WrapperObject>
+        <WrapperObject>
+          <span>Password: </span>
+          <span>{password[1]}</span>
+        </WrapperObject>
+        <Button onClick={() => handleEditClick(name, password[0], password[1])}>
+          EDIT
+        </Button>
+        <DangerButton onClick={() => handleClick(name)}>DELETE!</DangerButton>
+      </Wrapper>
     </div>
   );
 }

@@ -57,9 +57,9 @@ app.post("/api/passwords", async (req, res) => {
 
 app.patch("/api/passwords/:name", async (req, res) => {
   const { name } = req.params;
-  const { value } = req.body;
+  const { userdata, value } = req.body;
   try {
-    await updatePassword(name, value);
+    await updatePassword(name, userdata, value);
     res.send("Updated data in database.");
   } catch (e) {
     console.error(e);
