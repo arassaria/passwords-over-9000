@@ -3,6 +3,7 @@ import { getPasswordNames } from "./utils/api";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Password from "./components/Password";
 import Form from "./components/Form";
+import Edit from "./components/Edit";
 
 function App() {
   const [passwordNames, setPasswordNames] = useState([""]);
@@ -20,6 +21,9 @@ function App() {
         <Switch>
           <Route path="/password">
             <Form />
+          </Route>
+          <Route path="/edit">
+            <Edit />
           </Route>
           <Route path="/:name">
             <Password />

@@ -33,3 +33,17 @@ export async function createNewPassword(
     },
   });
 }
+
+export async function updatePassword(passwordName, userdata, passwordValue) {
+  await fetch(`http://localhost:3001/api/passwords/${passwordName}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      name: passwordName,
+      userdata: userdata,
+      value: passwordValue,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
