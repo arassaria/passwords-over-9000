@@ -1,17 +1,17 @@
 export async function getPasswordNames() {
-  const result = await fetch("http://localhost:3001/api/passwords");
+  const result = await fetch("/api/passwords");
   const passwordNames = await result.json();
   return passwordNames;
 }
 
 export async function getPassword(name) {
-  const result = await fetch(`http://localhost:3001/api/passwords/${name}`);
+  const result = await fetch(`/api/passwords/${name}`);
   const password = await result.json();
   return password;
 }
 
 export async function deletePassword(name) {
-  await fetch(`http://localhost:3001/api/passwords/${name}`, {
+  await fetch(`/api/passwords/${name}`, {
     method: "DELETE",
   });
 }
@@ -21,7 +21,7 @@ export async function createNewPassword(
   newUserdata,
   newPasswordValue
 ) {
-  await fetch(`http://localhost:3001/api/passwords`, {
+  await fetch(`/api/passwords`, {
     method: "POST",
     body: JSON.stringify({
       name: passwordName,
@@ -35,7 +35,7 @@ export async function createNewPassword(
 }
 
 export async function updatePassword(passwordName, userdata, passwordValue) {
-  await fetch(`http://localhost:3001/api/passwords/${passwordName}`, {
+  await fetch(`/api/passwords/${passwordName}`, {
     method: "PATCH",
     body: JSON.stringify({
       name: passwordName,
