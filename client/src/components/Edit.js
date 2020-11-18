@@ -35,7 +35,10 @@ export default function Edit() {
   return (
     <div>
       <form
-        onSubmit={() => handleSubmit(passwordName, userdata, passwordValue)}
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleSubmit(passwordName, userdata, passwordValue);
+        }}
       >
         <input type="text" onChange={handleNameOnChange} value={passwordName} />
         <input type="text" onChange={handleUserdataOnChange} value={userdata} />

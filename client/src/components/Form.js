@@ -20,8 +20,7 @@ export default function Form() {
     setPasswordValue(e.target.value);
   }
 
-  function handleSubmit(passwordName, userdata, passwordValue, e) {
-    e.preventDefault();
+  function handleSubmit(passwordName, userdata, passwordValue) {
     createNewPassword(passwordName, userdata, passwordValue);
     history.push("/");
   }
@@ -29,7 +28,10 @@ export default function Form() {
   return (
     <div>
       <form
-        onSubmit={() => handleSubmit(passwordName, userdata, passwordValue)}
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleSubmit(passwordName, userdata, passwordValue);
+        }}
       >
         <input
           type="text"
