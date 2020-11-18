@@ -42,14 +42,16 @@ export default function Password() {
             <span>Password: </span>
             <span>{password[1]}</span>
           </p>
+          <button
+            onClick={() => handleEditClick(name, password[0], password[1])}
+          >
+            EDIT
+          </button>
+          <button onClick={() => handleClick(name)}>DELETE!</button>
         </div>
       ) : (
         <p>404 Password not Found</p>
       )}
-      <button onClick={() => handleEditClick(name, password[0], password[1])}>
-        EDIT
-      </button>
-      <button onClick={() => handleClick(name)}>DELETE!</button>
     </div>
   );
 }
