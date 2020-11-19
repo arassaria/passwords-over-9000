@@ -9,7 +9,7 @@ const {
   getPasswordNames,
 } = require("./lib/password");
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 require("dotenv").config();
 
 app.use(express.json());
