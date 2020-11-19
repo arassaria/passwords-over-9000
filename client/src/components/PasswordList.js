@@ -17,10 +17,11 @@ const ListItem = styled.li`
 
 const FakeButton = styled.span`
   border: 1px solid black;
-  background: grey;
+  background: limegreen;
   color: black;
   padding: 5px 20px;
-  box-shadow: 5px 5px 5px black;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px green;
 `;
 
 const Footer = styled.div`

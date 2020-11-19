@@ -13,26 +13,32 @@ const Input = styled.input`
   width: 40%;
   margin: 1rem auto;
   padding: 5px 0;
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px blue;
+  border-radius: 20px;
   border: none;
+  text-align: center;
+  background: lightblue;
+  color: black;
 `;
 
 const Button = styled.button`
   border: 1px solid black;
-  background: grey;
+  background: limegreen;
   color: black;
   padding: 5px 20px;
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px green;
+  border-radius: 20px;
   width: 20%;
   margin: 1rem auto;
 `;
 
 const FakeButton = styled.span`
   border: 1px solid black;
-  background: grey;
+  background: limegreen;
   color: black;
   padding: 5px 20px;
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px green;
+  border-radius: 20px;
 `;
 
 const Footer = styled.div`
@@ -41,19 +47,27 @@ const Footer = styled.div`
   margin-right: 2rem;
 `;
 
+const FakeInput = styled.div`
+  width: 40%;
+  margin: 1rem auto;
+  padding: 5px 0;
+  box-shadow: 5px 5px 5px blue;
+  border: none;
+  text-align: center;
+  background: lightblue;
+  font-size: 13.33333px;
+  font-family: arial;
+  border-radius: 20px;
+  color: black;
+`;
+
 export default function Edit() {
   const history = useHistory();
-  const [passwordName, setPasswordName] = useState(
-    localStorage.getItem("passwordName")
-  );
+  const passwordName = localStorage.getItem("passwordName");
   const [userdata, setUserdata] = useState(localStorage.getItem("userdata"));
   const [passwordValue, setPasswordValue] = useState(
     localStorage.getItem("passwordValue")
   );
-
-  function handleNameOnChange(e) {
-    setPasswordName(e.target.value);
-  }
 
   function handleUserdataOnChange(e) {
     setUserdata(e.target.value);
@@ -79,7 +93,7 @@ export default function Edit() {
           handleSubmit(passwordName, userdata, passwordValue);
         }}
       >
-        <Input type="text" onChange={handleNameOnChange} value={passwordName} />
+        <FakeInput>{passwordName}</FakeInput>
         <Input type="text" onChange={handleUserdataOnChange} value={userdata} />
         <Input
           type="text"
