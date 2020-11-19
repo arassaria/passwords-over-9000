@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const { connectToDb } = require("./lib/database");
 const {
   getPassword,
@@ -80,6 +81,17 @@ app.delete("/api/passwords/:name", async (req, res) => {
       .status(500)
       .send("An unexpected error occured. Please try again later.");
   }
+});
+
+app.use(express.static(path.join(__dirname, "client/build")));
+
+app.use(
+  "/storybook",
+  express.static(path.join(__dirname, "client/storybook-static"))
+);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
 async function run() {
