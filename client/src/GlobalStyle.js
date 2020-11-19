@@ -8,7 +8,8 @@ body {
       'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: limegreen;
+    background: black;
+    color: limegreen;
   }
 
   code {
@@ -18,6 +19,7 @@ body {
 
   h1, h2, h3, h4, h5, h6 {
     text-align: center;
+    text-shadow: 3px 3px 3px green;
   }
 
   a {

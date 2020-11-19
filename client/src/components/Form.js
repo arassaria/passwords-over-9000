@@ -12,26 +12,35 @@ const Input = styled.input`
   width: 40%;
   margin: 1rem auto;
   padding: 5px 0;
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px blue;
+  border-radius: 20px;
   border: none;
+  text-align: center;
+  background: lightblue;
+  color: black;
+  ::placeholder {
+    color: black;
+  }
 `;
 
 const Button = styled.button`
   border: 1px solid black;
-  background: grey;
+  background: limegreen;
   color: black;
   padding: 5px 20px;
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px green;
+  border-radius: 20px;
   width: 20%;
   margin: 1rem auto;
 `;
 
 const FakeButton = styled.span`
   border: 1px solid black;
-  background: grey;
+  background: limegreen;
   color: black;
   padding: 5px 20px;
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px green;
+  border-radius: 20px;
 `;
 
 const Footer = styled.div`
@@ -84,7 +93,7 @@ export default function Form() {
           placeholder="Userdate"
         />
         <Input
-          type="password"
+          type="text"
           onChange={handlePasswordValueChange}
           value={passwordValue}
           placeholder="Password"

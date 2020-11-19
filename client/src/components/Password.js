@@ -9,27 +9,31 @@ const Wrapper = styled.div`
 `;
 
 const WrapperObject = styled.div`
-  background: yellow;
+  background: violet;
+  color: black;
   border: 1px solid black;
   margin: 1rem auto;
   width: 40%;
   padding: 0.5rem 0;
-  box-shadow: 5px 5px 5px green;
+  box-shadow: 5px 5px 5px purple;
+  border-radius: 20px;
 `;
 
 const Button = styled.button`
   display: block;
   border: 1px solid black;
-  background: grey;
+  background: limegreen;
   color: black;
   padding: 5px 20px;
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px green;
+  border-radius: 20px;
   width: 20%;
   margin: 1rem auto;
 `;
 
 const DangerButton = styled(Button)`
   background: red;
+  box-shadow: 5px 5px 5px darkred;
 `;
 
 export default function Password() {
@@ -57,12 +61,8 @@ export default function Password() {
 
   return (
     <div>
-      <h3>Password {name}</h3>
       <Wrapper>
-        <WrapperObject>
-          <span>PasswordName: </span>
-          <span>{name}</span>
-        </WrapperObject>
+        <h3>Password {name}</h3>
         <WrapperObject>
           <span>Userdata: </span>
           <span>{password[0]}</span>

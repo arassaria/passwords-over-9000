@@ -8,10 +8,11 @@ import PasswordList from "./components/PasswordList";
 
 const FakeButton = styled.span`
   border: 1px solid black;
-  background: grey;
+  background: limegreen;
   color: black;
   padding: 5px 20px;
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 5px 5px 5px green;
+  border-radius: 20px;
 `;
 
 const Footer = styled.div`
