@@ -30,6 +30,10 @@ const Footer = styled.div`
   margin-right: 2rem;
 `;
 
+const Center = styled.div`
+  text-align: center;
+`;
+
 export default function PasswordList() {
   const { data, loading, error, doFetch } = useAsync(() => getPasswordNames());
   useEffect(() => {
@@ -38,7 +42,7 @@ export default function PasswordList() {
   return (
     <div>
       <h3>Your Passwords</h3>
-      {loading && <div>loading...</div>}
+      {loading && <Center>loading...</Center>}
       {error && <div>{error.message}</div>}
       <PasswordsList>
         {data &&
